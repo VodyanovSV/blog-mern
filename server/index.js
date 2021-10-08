@@ -1,11 +1,13 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import config from 'config'
+import postsRouter from './routes/posts.router.js'
 
 const app = express()
 const PORT = config.get('port') || 5000
 
 app.use(express.json({extended: true}))
+app.use('/api/posts', postsRouter)
 
 async function start() {
     try {
@@ -20,6 +22,6 @@ async function start() {
     }
 }
 
-start()
 
+start()
 

@@ -1,0 +1,29 @@
+{
+  "name": "mern-server",
+  "version": "1.0.0",
+  "description": "mern-server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "client": "npm run start --prefix ../client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "author": "Sergey Vodyanov <vodyanovsv@yandex.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
+    "express": "^4.17.3",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.13",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.15"
+  }
+}
