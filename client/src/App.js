@@ -1,5 +1,5 @@
 import React from 'react'
-import {HeaderBlock} from './components'
+import {HeaderBlock, PostsList} from './components'
 import {BrowserRouter as Router, Routes, Route, Navigate, Link} from 'react-router-dom'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
                     <div className="content">
                         <Router>
                             <Routes>
-                                <Route path={'/'} exact element={}/>
+                                <Route path={'/'} exact element={<PostsList/>}/>
                             </Routes>
                         </Router>
                     </div>
