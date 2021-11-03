@@ -1,5 +1,5 @@
 import React from 'react'
-import {HeaderBlock, PostsList} from './components'
+import {HeaderBlock, AddForm, PostsList} from './components'
 import {BrowserRouter as Router, Routes, Route, Navigate, Link} from 'react-router-dom'
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
                         <Router>
                             <Routes>
                                 <Route path={'/'} exact element={<PostsList/>}/>
+								<Route path={'/addpost'} exact element={<AddForm type={'add'}/>}/>
                             </Routes>
                         </Router>
                     </div>
