@@ -1,5 +1,5 @@
 import React from 'react'
-import {HeaderBlock, AddForm, PostsList} from './components'
+import {HeaderBlock, AddForm, PostsList, FullPost} from './components'
 import {BrowserRouter as Router, Routes, Route, Navigate, Link} from 'react-router-dom'
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
                             <Routes>
                                 <Route path={'/'} exact element={<PostsList/>}/>
 								<Route path={'/addpost'} exact element={<AddForm type={'add'}/>}/>
+								<Route path={'/post/:id'} exact element={<FullPost createAt={' ' + new Date().toLocaleDateString()}/>}/>
                             </Routes>
                         </Router>
                     </div>
