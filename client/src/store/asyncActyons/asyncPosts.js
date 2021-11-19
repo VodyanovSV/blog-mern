@@ -42,3 +42,25 @@ export const addPost = (post) => {
     }
 }
 
+export const removePost = (id) => {
+    return async (dispatch) => {
+        try {
+            const url = `/api/posts/${id}`
+            const method = 'DELETE'
+            const headers = {'Content-Type': 'application/json'}
+
+            const response = await fetch(url, {method, headers})
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Что-то пошло не так')
+            }
+
+            dispatch(removePostActionCreators(id))
+
+        } catch (e) {
+            alert(e.message)
+        }
+    }
+}
+
