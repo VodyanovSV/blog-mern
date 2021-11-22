@@ -21,6 +21,7 @@ const PostItem = ({title, createdAt, _id}) => {
             <p>
                 <i>Posted on {createdAt}</i>
                 <a href={'#'} onClick={removeHandler}>Remove</a>
+                <Link to={`/post/${_id}/edit`}>Edit</Link>
             </p>
         </div>
     );
