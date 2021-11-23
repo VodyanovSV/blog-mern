@@ -42,6 +42,27 @@ export const addPost = (post) => {
     }
 }
 
+export const editPost = (post) => {
+    return async (dispatch) => {
+        try {
+            const url = `/api/posts/${post.id}`
+            const method = 'PUT'
+            const body = JSON.stringify({title: post.title, imageUrl: post.url, text: post.content})
+            const headers = {'Content-Type': 'application/json'}
+
+            const response = await fetch(url, {method, body, headers})
+            const data = await response.json()
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Что-то пошло не так')
+            }
+
+        } catch (e) {
+            alert(e.message)
+        }
+    }
+}
+
 export const removePost = (id) => {
     return async (dispatch) => {
         try {
