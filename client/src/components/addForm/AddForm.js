@@ -1,15 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import './AddForm.scss'
-import {Link} from "react-router-dom";
-import {addPost} from "../../store/asyncActyons/asyncPosts";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {addPost, editPost} from "../../store/asyncActyons/asyncPosts";
 
 const AddForm = ({type}) => {
-	
-	const dispatch = useDispatch()
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const {id} = useParams()
+    const posts = useSelector(state => state.postsReduser.posts)
 
     const [title, setTitle] = useState('')
     const [url, setUrl] = useState('')
     const [content, setContent] = useState('')
+
+    useEffect(() => {
+        if (type === 'edit') {
+            const post = posts.find(post => post._id === id)
+            setTitle(post.title)
+            setUrl(post.imageUrl)
+            setContent(post.text)
+        }
+    }, [])
+
 
     function titleHandler(event) {
         setTitle(event.target.value)
@@ -25,7 +39,12 @@ const AddForm = ({type}) => {
 
     function submitHandler(event) {
         event.preventDefault()
-        dispatch(addPost({title, url, content}))
+        if (type === 'add') {
+            dispatch(addPost({title, url, content}))
+        } else {
+            dispatch(editPost({id, title, url, content}))
+        }
+        navigate('/')
     }
 
     return (
